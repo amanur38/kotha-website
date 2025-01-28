@@ -14,3 +14,13 @@
   background-color: rgb(230, 225, 225);
   padding-bottom: 40px;
 }
+
+.youWill {
+  font-family: "Roboto Condensed", serif;
+  font-optical-sizing: auto;
+}
+
+h1, h2, h3 {
+  font-family: "Roboto Condensed", serif;
+  font-optical-sizing: auto;
+}

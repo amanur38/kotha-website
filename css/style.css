@@ -2,6 +2,88 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Myriad Pro';
+  src: url('../fonts/MyriadPro-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Myriad Pro';
+  src: url('../fonts/MyriadPro-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Myriad Pro';
+  src: url('../fonts/MyriadPro-It.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Myriad Pro';
+  src: url('../fonts/MyriadPro-BoldCond.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Myriad Pro';
+  src: url('../fonts/MyriadPro-BoldCondIt.otf') format('opentype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Myriad Pro';
+  src: url('../fonts/MyriadPro-Cond.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Myriad Pro';
+  src: url('../fonts/MyriadPro-CondIt.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Myriad Pro';
+  src: url('../fonts/MyriadPro-Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Myriad Pro';
+  src: url('../fonts/MyriadPro-SemiboldIt.otf') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* Nexa Fonts */
+@font-face {
+  font-family: 'Nexa';
+  src: url('../fonts/Nexa-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nexa';
+  src: url('../fonts/Nexa-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Myriad Pro', sans-serif;
+}
+
 .image img {
   width: 400px;
   height: auto;
@@ -17,6 +99,6 @@
 
 
 h1, h2, h3, h4, h5, h6, p, span, a {
-  font-family: "Roboto Condensed", serif;
+  font-family: 'Myriad Pro', sans-serif;
   font-optical-sizing: auto;
 }

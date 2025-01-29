@@ -15,12 +15,8 @@
   padding-bottom: 40px;
 }
 
-.youWill {
-  font-family: "Roboto Condensed", serif;
-  font-optical-sizing: auto;
-}
 
-h1, h2, h3 {
+h1, h2, h3, h4, h5, h6, p, span, a {
   font-family: "Roboto Condensed", serif;
   font-optical-sizing: auto;
 }

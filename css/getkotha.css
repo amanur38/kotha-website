@@ -670,3 +670,12 @@ tr:nth-child(even) {
 }
 
 /* Hamburger Menu end */
+
+
+.clip-curve {
+  background-color: #6CA400;
+  clip-path: ellipse(100% 100% at 100% 50%);
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+  position: relative;
+}

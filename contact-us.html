@@ -187,6 +187,37 @@
                 body: JSON.stringify(values),
             }
 
+
+            // required input field
+            let valid = true;
+            form.querySelectorAll('.error-message').forEach(el => el.remove());
+            const requiredFields = [
+                form.elements['nameTitle'],
+                form.elements['fname'],
+                form.elements['lname'],
+                form.elements['email']
+            ];
+
+            requiredFields.forEach(input => {
+                if (!input.value.trim()) {
+                    valid = false;
+                    input.classList.add('border-red-500');
+                    // Show error message if not already present
+                    if (!input.parentNode.querySelector('.error-message')) {
+                        const error = document.createElement('span');
+                        error.className = 'error-message text-red-500 text-xs';
+                        error.innerText = 'required this field';
+                        input.parentNode.appendChild(error);
+                    }
+                } else {
+                    input.classList.remove('border-red-500');
+                }
+            });
+            if (!valid) {
+                return false;
+            }
+
+
             fetch(apiUrl, reuquestOptions)
                 .then(response => response.json())
                 .then(data => {

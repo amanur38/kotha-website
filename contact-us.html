@@ -222,6 +222,11 @@
                 .then(response => response.json())
                 .then(data => {
                     console.log('Success:', data);
+                    form.reset();
+                    // Remove error styles/messages if any
+                    form.querySelectorAll('.border-red-500').forEach(el => el.classList.remove('border-red-500'));
+                    form.querySelectorAll('.error-message').forEach(el => el.remove());
+                    alert('Message send successfully');
                 })
                 .catch((error) => {
                     console.error('Error:', error);

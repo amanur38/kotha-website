@@ -29,12 +29,12 @@
 
     <!-- <main class="container mx-auto lg:px-52 lg:py-10 px-5 py-5"> -->
     <section class="container lg:px-52 lg:py-10 px-5 py-5">
-        <div id="min-height-page"  class="col-md-12 aboutp flex flex-col lg:flex-row items-center lg:items-start">
+        <div id="min-height-page" class="col-md-12 aboutp flex flex-col lg:flex-row items-center lg:items-start">
 
             <div class="w-full lg:hidden">
                 <img src="images/contact-us-mobile.png" alt="About Kotha" class="w-full h-auto rounded-lg">
             </div>
-        
+
             <!-- Left Side (Image) -->
             <div class="w-full lg:w-2/5 mb-1 lg:mb-0 hidden lg:block">
                 <img src="images/contact-us.png" alt="About Kotha" class="w-full h-auto rounded-lg">
@@ -115,7 +115,19 @@
                     <!-- Submit Button -->
                     <div class="m-auto mt-8 flex justify-center">
                         <button type="submit" id="submit_button"
-                            class="w-36 bg-[#6CA400] text-white py-2 rounded hover:bg-[#6CA400] transition">Submit</button>
+                            class="w-36 bg-[#6CA400] text-white py-2 rounded hover:bg-[#6CA400] transition flex items-center justify-center">
+                            <span id="button-text">Submit</span>
+                            <span id="spinner" class="hidden ml-2">
+                                <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                        stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor"
+                                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                                    </path>
+                                </svg>
+                            </span>
+                        </button>
                     </div>
                 </form>
             </div>
@@ -159,6 +171,7 @@
     <script>
         // const submitButton = document.getElementById('submit_button');
         const apiUrl = `https://api-email.dhakaflow.com/send-email`;
+        // const apiUrl = `http://localhost:5000/send-email`;
         // let x = document.forms["myForm"]["fname"].value;
 
 
@@ -166,15 +179,13 @@
             event.preventDefault();
             const form = event.target;
             const inputs = form.querySelectorAll('input, textarea');
+            const submitButton = document.getElementById('submit_button');
+            const buttonText = document.getElementById('button-text');
+            const spinner = document.getElementById('spinner');
 
-            // Get individual name fields
-            // const nameTitle = form.elements['nameTitle']?.value?.trim() || '';
-            // const fname = form.elements['fname']?.value?.trim() || '';
-            // const lname = form.elements['lname']?.value?.trim() || '';
-
-            // Combine into one "name"
-            // const name = [nameTitle, fname, lname].filter(Boolean).join(' ');
-
+            buttonText.innerText = 'Sending...';
+            spinner.classList.remove('hidden');
+            submitButton.disabled = true;
 
             const values = {};
             inputs.forEach(input => {
@@ -217,10 +228,11 @@
                 }
             });
             if (!valid) {
+                buttonText.innerText = 'Submit';
+                spinner.classList.add('hidden');
+                submitButton.disabled = false;
                 return false;
             }
-
-            console.log('requestOption', reuquestOptions)
 
             fetch(apiUrl, reuquestOptions)
                 .then(response => response.json())
@@ -230,6 +242,11 @@
                     // Remove error styles/messages if any
                     form.querySelectorAll('.border-red-500').forEach(el => el.classList.remove('border-red-500'));
                     form.querySelectorAll('.error-message').forEach(el => el.remove());
+
+                    // Reset button state
+                    buttonText.innerText = 'Submit';
+                    spinner.classList.add('hidden');
+                    submitButton.disabled = false;
 
                     // popup box
                     let popup = document.createElement('div');
